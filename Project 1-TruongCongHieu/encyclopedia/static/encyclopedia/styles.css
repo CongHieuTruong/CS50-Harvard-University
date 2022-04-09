@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  background-color: white;
+}
+
+code {
+  white-space: pre;
+}
+
+h1 {
+  margin-top: 0px;
+  padding-top: 20px;
+}
+
+textarea {
+  margin: 10px 0 10px 0;
+  height: 65vh;
+  width: 80%;
+  display: block;
+}
+
+input[type='submit'] {
+  display: block;
+}
+
+.main {
+  padding: 10px;
+}
+
+.search {
+  width: 100%;
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.sidebar {
+  background-color: #f0f0f0;
+  height: 100vh;
+  padding: 20px;
+  margin-top: 5px;
+}
+
+h2 {
+  margin-top: 5px;
+}
+
+.logo {
+  width: 100%;
+}
+
+.btn_create{
+  margin-top: 10px !important;
+}

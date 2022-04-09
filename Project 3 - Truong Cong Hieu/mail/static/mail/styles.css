@@ -1,0 +1,33 @@
+textarea {
+  min-height: 400px;
+}
+
+.body {
+  background-color: #f8f8ff;
+}
+
+.list_email_item,
+.list_email_item_unread {
+  background-color: #f0f1f3;
+  border-color: #838181;
+  border-style: solid;
+  border-radius: 8px;
+  border-width: 1px;
+  margin-top: 10px;
+  padding: 12px;
+}
+.list_email_item .timestamp,
+.list_email_item_unread .timestamp {
+  float: right;
+  text-align: right;
+}
+
+.list_email_item:hover,
+.list_email_item_unread:hover {
+  cursor: pointer;
+  background-color: #f7f8fe;
+}
+
+.list_email_item_unread {
+  background-color: #ffffff;
+}

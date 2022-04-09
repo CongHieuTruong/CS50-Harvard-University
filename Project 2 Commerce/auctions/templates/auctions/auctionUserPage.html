@@ -1,0 +1,116 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+
+<div class="container">
+    <div class="row" id="product">
+        <div class="col-lg-6 img-product">
+                <img class="img-fluid" src="{{auction.image.url}}" alt="connect" style="max-height:600px">
+                <p class="product product-description user_product">{{auction.user|title}}</p>
+                <p class="product product-description category_product">
+                    <a class="nav-link link_for_category" href="{% url 'category' category=auction.category.name %}">{{auction.category}}</a>
+                </p>
+                <p class="product product-description date_of_product">{{auction.datepublished}}</p>
+        </div>
+        <div class="col-lg-6 description_for_auction_item">
+            <p class="product-title"><i>{{auction.title}}</i></p>
+            <p class="product-description">{{auction.description}}</p>
+            {% if auction.closed == False %}
+                {% if auction.last_bid %}
+                    <p id="lastBid" class="lastBid{{auction.id}} product-description product" value="{{auction.last_bid.bid}}">Current Bid: {{auction.last_bid.bid}}</p>
+                {% else %}
+                    <p id="initialBid" class="lastBid{{auction.id}} product-description product" value="{{auction.starting_bid}}">Initial Bid: {{auction.starting_bid}}</p>
+                {% endif %}
+            {% else %}
+                <p id="initialBid" class="lastBid{{auction.id}} product-description product" value="{{auction.starting_bid}}">Close in: {{auction.starting_bid}}</p>
+                {% if auction.last_bid.user.username == request.user.username %}
+                    <p class="product-description product">You win this listing</p>
+                {% else %}
+                    <p class="product-description product">Sold to {{auction.last_bid.user.username|title}}</p>
+                {% endif %}
+            {% endif %}
+            {% if request.user != auction.user %}
+                {% if auction.closed == False %}
+                <small class="product product_for_bid"><span id="smallTotalBid">{{auction.bids.count}}</span> bid(s) so far. <span id="yourLastBid">{% if auction.last_bid.user == request.user %}Your bid is the current bid.{% endif %}</span></small>
+                <div class="row">
+                    <form id="control_bid_field" data-startingbid="{{auction.starting_bid}}" data-lastbid="{{auction.last_bid}}" data-auction="{{auction.id}}" action="{% url 'update_auction_bid' auction=auction.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="number" name="totalBid" id="newBid" placeholder="Total bid">
+                        <button class="button_add_auction" type="submit">Send</button>
+                    </form>
+                        {% if auction not in my_watchlist.auctions.all %}
+                            <form id="addItemToWatchList" action="{% url 'add_watchlist' auction=auction.id %}" method="post">
+                                {% csrf_token %}
+                                <button id="button-auction" class="button_add_auction" type="submit"><i id="heart" class="fa fa-heart-o"></i></button>
+                            </form>   
+                        {% else %}
+                            <form id="addItemToWatchList" action="{% url 'add_watchlist' auction=auction.id %}" method="post">
+                                {% csrf_token %}
+                                <button id="button-auction" class="button_add_auction added" type="submit"><i id="heart" style="color:red;" class="fa fa-heart-o"></i></button>
+                            </form> 
+                        {% endif %}
+                </div>
+                <p style="color: red;"><small id="message"></small></p>
+                {% endif %}
+            {% endif %}
+            {% if auction.user == request.user %}
+                <div class="right_button">
+                    <a class="btn button_for_auction" href="{% url 'user_delete_auction' auction=auction.id %}">Delete</a> 
+                    {% if auction.closed == False %}
+                    <a class="btn button_for_auction" href="{% url 'user_close_listing' auction=auction.id %}">Close listing</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div>
+        <div class="button_in_middle">
+            <button type="button" class="btn button_for_auction button_comment" data-toggle="modal" data-target="#create">Leave a comment</button>
+        </div>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content new-post-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Leave comment</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method=post action="{% url 'add_user_comment' auction=auction.id %}">
+                        {% csrf_token %}
+                        <textarea rows="10" class="form-control" name="comment" placeholder="Ex: Nice item"></textarea>
+                        <br>
+                        <div class="modal-footer">
+                            <button class="btn btn-outline-dark save" type="submit" value="Create">Create</button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% if comments %}
+        <div id="commentsList">
+            {% for comment in comments %}
+                <div id="comment{{comment.id}}" class="comment">
+                    <small><strong>{{comment.user|title}}</strong></small>
+                    <p class="comment-cont">{{comment.comment}}</p>
+                    <div class="right_button">
+                        <form id="control_delete_comment" data-comment='{{comment.id}}' action="{% url 'delete_user_comment' comment=comment.id %}">
+                            {% csrf_token %}
+                            <small style="margin-right: 4px;">{{comment.date}}</small>
+                            <button class="btn btn-outline-dark" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

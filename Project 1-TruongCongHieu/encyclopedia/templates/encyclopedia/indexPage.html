@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layoutPage.html" %} {% block title %} Home {% endblock %} 
+{% block body %}
+<h1>Welcome to EWiki</h1>
+
+<p>
+  You have found the right website, Ewiki site is designed as a repository of information and human wisdom, integrated with
+  artificial intelligence, it's like a living dictionary and you can find whatever you want.
+</p>
+
+<h2>Pages:</h2>
+
+<ul>
+  {% for entry in entries %}
+  <li><a href="{% url 'entry' title=entry %}">{{ entry }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

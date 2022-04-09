@@ -1,0 +1,8 @@
+{% extends "encyclopedia/layoutPage.html" %} {% block title %} Entry not found: {{title}} {% endblock %}
+{% block body %}
+
+<h1>Found error: Entry "{{title}}" doesn't exist now</h1>
+
+<p>The requested entry "{{title}}" doesn't exist on EWiki.</p>
+<p>Try to check the <a href="{% url 'index' %}">index</a> page to see available articles.</p>
+{% endblock %}

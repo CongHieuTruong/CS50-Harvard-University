@@ -1,0 +1,36 @@
+{% extends "mail/layout.html" %} {% load static %} {% block body %}
+<h2 id="current-user">{{ request.user.email }}</h2>
+
+<button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+<button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+<button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+<button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+<a class="btn btn-sm btn-outline-primary" href="{% url 'user/logout' %}">Log Out</a>
+<hr />
+
+<div id="emails-view">
+  <h3></h3>
+</div>
+
+<div id="compose-view">
+  <h3>Create new Email</h3>
+  <form id="compose-form">
+    <div class="form-group">
+      From:
+      <input disabled class="form-control" value="{{ request.user.email }}" id="compose_sender" />
+    </div>
+    <div class="form-group">To: <input id="compose_email_recipients" class="form-control" /></div>
+    <div class="form-group">
+      <input class="form-control" id="compose_email_subject" placeholder="Subject" />
+    </div>
+    <textarea class="form-control" id="compose_email_body" placeholder="Content"></textarea>
+    <input type="submit" class="btn btn-primary" style="margin-top: 15px" />
+  </form>
+</div>
+
+<div id="email-view">
+  <button id="btn_email_unread" class="btn-secondary">Mark email as Unread</button>
+</div>
+{% endblock %} {% block script %}
+<script src="{% static 'mail/frontendLogic.js' %}"></script>
+{% endblock %}

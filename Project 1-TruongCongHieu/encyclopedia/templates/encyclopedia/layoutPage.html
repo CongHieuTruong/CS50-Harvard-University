@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>EWiki: {% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'encyclopedia/icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'encyclopedia/icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'encyclopedia/icon.png' %}" />
+    <link rel="manifest" href="{% static 'encyclopedia/site.webmanifest' %}" />
+  </head>
+  <body>
+    <div class="row">
+      <div class="sidebar col-lg-2 col-md-3">
+        <img class="logo" src="{% static 'encyclopedia/intelligence.jpg' %}" />
+        <h2>EWiki</h2>
+        <form action="{% url 'search' %}" method="post">{% csrf_token %} {{ search_form }}</form>
+        <div>
+          <a href="{% url 'index' %}">Home</a>
+        </div>
+        <div>
+          <a href="{% url 'create' %}">Create New Page</a>
+        </div>
+        <div>
+          <a href="{% url 'random-title' %}">Random Page</a>
+        </div>
+        {% block nav %} {% endblock %}
+      </div>
+      <div class="main col-lg-10 col-md-9" style="word-break: break-all; word-wrap: break-word;">
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>{{ message }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <div aria-hidden="true">&times;</div>
+              </button>
+            </div>
+            {% endif %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <div aria-hidden="true">&times;</div>
+              </button>
+            </div>
+            {% endif %} 
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block body %} {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

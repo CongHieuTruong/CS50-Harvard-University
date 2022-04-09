@@ -1,0 +1,1 @@
+[Django](/wiki/Django) is a [Python](/wiki/Python)-based free and open-source web framework that follows the model template views (MTV) architectural pattern. It is maintained by the Django Software Foundation (DSF). Source from the real Wiki.

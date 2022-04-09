@@ -1,0 +1,3 @@
+A woman is an adult female human. Prior to adulthood, a female human is referred to as a girl (a female child or adolescent). The plural women is sometimes used in certain phrases such as "women's rights" to denote female humans regardless of age.
+
+Typically, women have two X chromosomes and are capable of pregnancy and giving birth from puberty until menopause. Female anatomy is distinguished from male anatomy by the female reproductive system, which includes the ovaries, fallopian tubes, uterus, vagina, and vulva. The adult female pelvis is wider, the hips broader, and the breasts larger than that of adult males. Women have significantly less facial and other body hair, have a higher body fat composition, and are on average shorter and less muscular than men.

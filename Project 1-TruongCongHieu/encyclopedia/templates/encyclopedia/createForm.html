@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layoutPage.html" %} {% block title %} Create New Page {% endblock %} 
+{% block body %}
+
+<h1>Create a new EWiki Page:</h1>
+
+<p>Use the form below to create a new EWiki Page.</p>
+<p>
+  Please note that EWiki uses
+  <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax"
+    >Github Markdown</a
+  >
+  to style its pages.
+</p>
+
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %} 
+  {{ create_form }}
+  <div class='btn_create' style="margin-top: 10px;">
+    <input class="btn btn-primary" type="submit" value="Submit" />
+  </div>
+</form>
+
+{% endblock %}

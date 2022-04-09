@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layoutPage.html" %} {% block title %} Edit Page {{ title }} {% endblock %} 
+{% block body %}
+
+<h1>Editing Ewiki Page name "{{ title }}":</h1>
+
+<p>
+  Note that in Ewiki, we use
+  <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax"
+    >Github Markdown</a
+  >
+  to style its pages.
+</p>
+
+<form action="{% url 'edit' title=title %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ edit_form }}
+  <input class="btn btn-primary" type="submit" value="Submit" style="margin-top: 20px;" />
+</form>
+
+{% endblock %}

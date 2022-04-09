@@ -1,0 +1,43 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+
+<div>
+
+    {% if my_watchlist.auctions.all %}
+    <div class="container-fluid">
+        <div class="row">
+        {% for auction in my_watchlist.auctions.all %}
+            <div id="auction{{auction.id}}" class="card item_details col-lg-4 col-sm-12">
+                <div class="card-body">
+                <h5 class="card-title">{{auction.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{auction.datepublished}}</h6>
+                <img class="img-fluid" src="{{auction.image.url}}" alt="connect" style="max-height:300px">
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% if auction.last_bid %}
+                        <li class="list-group-item">Current Bid: ${{auction.last_bid.bid}}</li>
+                    {% else %}
+                        <li class="list-group-item">Initial Bid: ${{auction.starting_bid}}</li>
+                    {% endif %}
+                    <li class="list-group-item">Category: {{auction.category}}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{% url 'auction_view_page' auction=auction.id %}" class="card-link btn btn_for_auction_outline_class">Auction page <i class="fa fa-angle-double-right"></i></a>
+                    <form data-auction={{auction.id}} id="button_delete_watchlist" action="{% url 'delete_item_from_watchlist_page' auction=auction.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="button_delete_watchlist btn btn_for_auction_outline_class">Delete from watchlist <i class="fa fa-close"></i></button>
+                    </form>
+                </div>
+            </div>    
+        {% endfor %}
+        </div>
+    </div>
+    {% else %}
+        <div class="empty_message">
+            <p>Your watch list is empty!</p>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

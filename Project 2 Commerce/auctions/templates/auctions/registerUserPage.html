@@ -1,0 +1,59 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="container">
+    <div class="register">
+        <h2 class="title">Register</h2>
+
+        {% if message %}
+            <div style="color: red;">{{ message }}</div>
+        {% endif %}
+
+        <form class="needs-validation" action="{% url 'user_register' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" autofocus type="text" name="username" placeholder="Username" required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email Address" required>
+                <div class="invalid-feedback">
+                    Please choose a email.
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                    <div class="input-group-prepend">
+                        <button type="button" onclick="removeEncryptionPassword('password', 'buttonVisibility')" class="input-group-text"><i id="buttonVisibility" class="fa fa-eye"></i></button>
+                    </div>
+                    <div class="invalid-feedback">
+                        Please choose a password.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="password" name="confirmation" class="form-control" id="confirmation" placeholder="confirm password" required>
+                    <div class="input-group-prepend">
+                        <button type="button" onclick="removeEncryptionPassword('confirmation', 'buttonVisibility2')" class="input-group-text"><i id="buttonVisibility2" class="fa fa-eye"></i></button>
+                    </div>
+                    <div class="invalid-feedback">
+                        Please choose a password.
+                    </div>
+                </div>
+            </div>
+            <p class="showed_register_message">Already have an account? <a href="{% url 'login' %}">Log In here.</a></p>
+            <div class="right_button">
+                <input class="btn button_for_auction" type="submit" value="Register">
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

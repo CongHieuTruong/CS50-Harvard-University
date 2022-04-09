@@ -1,0 +1,252 @@
+body {
+  background: #fff;
+  color: #222;
+  font-family: arial, sans-serif;
+  font-size: small;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: #4285f4;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.body_page {
+  height: 233px;
+  margin-top: -15px !important;
+  display: block;
+  text-align: -webkit-center;
+}
+.header_navigate {
+  height: 47px;
+  text-align: right;
+  padding: 15px 20px;
+}
+
+@media only screen and (max-height: 768px) {
+  .body_page {
+    margin-top: 47px;
+  }
+}
+
+.google_logo_form {
+  height: 92px;
+  width: 272px;
+  padding-top: 186px;
+  padding-bottom: 18px;
+  text-align: -webkit-center;
+}
+.header_navigate a {
+  margin: 0 5px;
+}
+
+.input_with_form {
+  background: #fff;
+  display: flex;
+  border: 1px solid #dfe1e5;
+  box-shadow: none;
+  border-radius: 24px;
+  height: 44px;
+  margin: 0 auto;
+  width: 534px;
+}
+
+.form_search {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 7px;
+  width: 584px;
+}
+.inner_input {
+  flex: 1;
+  display: flex;
+  padding: 5px 8px 0 16px;
+  padding-left: 14px;
+}
+
+.icon_main {
+  margin-top: 0px;
+  color: #9aa0a6;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  fill: currentColor;
+  line-height: 24px;
+  position: relative;
+}
+
+.search_icon {
+  display: flex;
+  align-items: center;
+  padding-right: 13px;
+  margin-top: -5px;
+}
+
+.inner_search_icon {
+  margin: auto;
+  display: block;
+}
+
+.icon_main svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.microphone_icon {
+  display: flex;
+  flex: 0 0 auto;
+  margin-top: -5px;
+  align-items: stretch;
+  flex-direction: row;
+}
+.microphone {
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+}
+
+.input_input {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.inner_div_micro {
+  flex: 1 0 auto;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding: 0 8px;
+  width: 24px;
+  line-height: 44px;
+}
+.q {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.87);
+  outline: none;
+  display: flex;
+  flex: 100%;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: -5px;
+  font-size: 16px;
+}
+
+input[type='submit']:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-image: -webkit-linear-gradient(top, #f8f8f8, #f1f1f1);
+  background-color: #f8f8f8;
+  border: 1px solid #c6c6c6;
+  color: #222;
+}
+
+input[type='submit'] {
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+  background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
+  color: #5f6368;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  margin: 11px 4px;
+  padding: 0 16px;
+  line-height: 27px;
+  height: 36px;
+  min-width: 54px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.subtext_google_logo_form_container {
+  color: #4285f4;
+  font: 16px/16px roboto-regular, arial, sans-serif;
+  white-space: nowrap;
+  text-align: right;
+  margin-top: -37px;
+  margin-right: 6px;
+  margin-bottom: 14px;
+  letter-spacing: -0.01px;
+}
+.subtext_google_logo_form {
+  color: #4285f4;
+  font: 16px/16px roboto-regular, arial, sans-serif;
+  white-space: nowrap;
+  -webkit-user-select: none;
+}
+.image_container {
+  width: 272px;
+}
+
+.inner_search_button {
+  background: none;
+  color: #4285f4;
+  height: 24px;
+  width: 24px;
+  margin: auto;
+}
+
+.search-icon-container {
+  display: inline-block;
+  fill: currentColor;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  width: 24px;
+  margin-top: -5px;
+  margin-right: -3px;
+}
+
+svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.camera {
+  margin-top: -5px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding: 0 8px;
+}
+
+.search_button {
+  flex: 0 0 auto;
+  padding-right: 13px;
+  height: 44px;
+  width: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search_button:focus {
+  border: none;
+  outline: none;
+}
+.camera_icon {
+  height: 24px;
+  width: 24px;
+  background: url('http://www.gstatic.com/images/icons/material/system/2x/photo_camera_grey600_24dp.png')
+    0 0 no-repeat;
+  background-size: 24px;
+}

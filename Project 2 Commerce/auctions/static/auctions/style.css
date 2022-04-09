@@ -1,0 +1,226 @@
+body{
+  background-color: #f5f5f5f3;
+}
+
+.logo_page {
+  font-size: 40px;
+  font-family: 'French Script MT', cursive;
+  color: #646791;
+  width: 2000px;
+}
+.logo_page:hover {
+  text-decoration: none;
+  color: #686767;
+}
+
+.logo_page .contentDiv {
+  width:  max-content;
+}
+
+.comment {
+  background-color: white;
+  border: 1px solid #ebe6e6;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.add-comment {
+  margin-top: 40px;
+}
+
+#button_heart_watchList {
+  background: #1164c9;
+  border-radius: 0.8em;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  width: 26px;
+  color: white;
+}
+
+#product{
+  padding: 10px;
+}
+
+.product-title{
+  font-family: 'DM Mono', monospace;
+  font-size: 26px;
+}
+
+.product-description{
+  font-family: 'DM Mono', monospace;
+  border: 0px;
+}
+
+.description{
+  font-style: italic;
+}
+
+.category_product{
+  position: absolute;
+  top: 8px;
+  right: 30px;
+}
+
+.user_product{
+  position: absolute;
+  bottom: -4px;
+  left: 30px;
+}
+
+.date_of_product{
+  position: absolute;
+  bottom: -4px;
+  right: 30px;
+}
+
+.link_for_category{
+  color: black !important;
+  text-shadow: 1px 0px 0px #000000;
+}
+
+.link_for_category:hover{
+  color: grey !important;
+}
+
+.button_add_auction {
+  color: white;
+  background-color: black;
+  margin-right: 4px;
+}
+
+.product_for_bid {
+  font-family: 'DM Mono', monospace;
+}
+
+.product {
+  margin: 0px !important;
+}
+
+.description_for_auction_item {
+  background-color: white;
+  border: 1px solid grey;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+#control_bid_field{
+  margin-left: 16px;
+}
+
+.navigation_top{
+  border-bottom: 1px solid #ebe6e6;
+}
+
+.list_categories {
+  border-bottom: 1px solid #ebe6e6;
+  margin-bottom: 10px;
+  background-color: white !important;
+  height: 60px;
+  justify-content: center;
+}
+
+.item_details{
+  text-align: center;
+}
+
+.button_for_auction {
+  margin-top: 10px;
+  background-color: #1164c9;
+  color: white;
+}
+
+.btn_for_auction_outline_class{
+  border: 1px solid #1164c9;
+  color: #1164c9;
+}
+
+.btn_for_auction_outline_class:hover{
+  background-color: #1164c9;
+  color: white;
+}
+
+.button_for_auction:hover{
+  color: #ebe6e6;
+}
+
+.dropdown{
+  list-style: none !important;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
+}
+
+.dropdown-item:active{
+  background-color: #1164c9;
+}
+
+.right_button{
+  text-align: right;
+}
+
+.button_in_middle{
+  text-align: center;
+}
+
+.button_comment{
+  margin-bottom: 10px;
+}
+
+.comment-cont{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+.button_item{
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.button_item:hover{
+  background-color: #4d4c4c;
+  color: white;
+}
+
+.button_delete_watchlist{
+  margin-top: 20px;
+}
+
+.login, .register, .auction_user_add{
+  border: 1px solid #f7f3f3;
+  padding: 20px;
+  margin-top: 6%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.showed_register_message{
+  margin-top: 20px;
+}
+
+.title{
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'French Script MT', cursive;
+}
+
+.nav-link{
+  text-align: center;
+}
+
+.empty_message{
+  margin-top: 20px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #f7f3f3;
+  font-size: 40px;
+  font-family: 'French Script MT', cursive;
+}

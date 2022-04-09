@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layoutPage.html" %}
+
+{% block body %}
+            <h5>{{data.title}}</h5>
+            {{entry | safe}}
+            <div style="flex-direction: column; display: flex; width: fit-content;">
+                {% if data.image %}
+                    <img src="{{data.image.url}}" alt="connect" style="max-height:300px; max-width: 200px;" width="{{ data.image.width }}" height="{{ data.image.height }}">
+                {% endif %}
+                <a class="btn btn-primary" href="{% url 'edit' title=title %}" style="width: 100px; margin-top: 20px;">Edit Page</a>
+            </div>
+
+{% endblock %}
