@@ -1,0 +1,107 @@
+.fa-heart {
+  color: rgb(247, 9, 9) !important;
+  cursor: pointer;
+}
+.itemNavigation.active .page-link {
+  color: white;
+  background-color: #0c81ff;
+  border-color: #0c81ff;
+}
+.itemNavigation:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.hide {
+  display: none;
+}
+
+.form-control {
+  margin-top: 10px;
+}
+
+textarea.form-control {
+  height: 100px;
+}
+.body {
+  padding: 10px 5px;
+}
+
+@keyframes card {
+  from {
+    left: 20px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+.card {
+  margin-top: 15px;
+  animation-name: card;
+  animation-duration: 1s;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #d42738;
+  border-color: #c92333;
+}
+
+#titleHeader {
+  animation: highlightText 3s linear;
+  animation-fill-mode: forwards;
+  color: black;
+  background: linear-gradient(to right, #575656 0, white 5%, #575656 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-size-adjust: none;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes highlightText {
+  0% {
+    background-position: 0;
+  }
+  95% {
+    background-position: 200px;
+  }
+
+  100% {
+    background-position: 200px;
+  }
+}
+#buttonSubmitPost,
+#div_save_close_buttons,
+.justify-content-center {
+  margin-top: 10px;
+}
+.cardContentPost {
+  margin: 10px 0;
+}
+.small_text {
+  color: black;
+  vertical-align: middle;
+}
+.rounderCard {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.cardUserNameAndLink {
+  margin-bottom: 1rem;
+}
+.navigationInsideLinkItem {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: rgba(15, 15, 15, 0.9);
+}
+a:hover {
+  text-decoration: none;
+}

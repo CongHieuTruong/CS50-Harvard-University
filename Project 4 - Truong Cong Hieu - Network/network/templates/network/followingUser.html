@@ -1,0 +1,41 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<h1 id="titleHeader">Following</h1>
+<div id="posts">
+    {% for post in posts %}
+    <div class="card">
+        <div class="rounderCard">
+            <h5 class="cardUserNameAndLink"><a href="{% url 'profile' post.user.username %}">{{post.user.username}}</a></h5>
+            {%if post.user_id == user.id %}
+            <a href="#" class="cardEditText" id="editButton_{{post.id}}" data-id="{{post.id}}" data-toggle="modal">Edit</a>
+            {%endif%}
+            <p class="cardContentPost" id="post_text_{{post.id}}"> {{ post.text }}</p>
+            {%if post.user_id == user.id %}
+            <div id="edit_button_id{{post.id}}" data-id="{{post.id}}" style="display: none">
+                {% csrf_token %}
+                <div class="textArea">
+                    <textarea
+                    class="form-control"
+                    id="editTextPostId{{post.id}}"
+                    placeholder="How are you today?"
+                    ></textarea>
+                </div>
+                <button type="button" data-id="{{post.id}}" id="buttonCloseEdit_{{post.id}}" class="btn btn-light"
+                    data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="buttonSaveEdit_{{post.id}}" queryId = '{{post.id}}'>Save changes</button>
+            </div>
+            {%endif%}
+            <p class="cardContentPost"><small class="small_text">{{post.post_date}}</small></p>
+            <p class="cardContentPost">
+                <div data-id="{{post.id}}" dataLikeId="{{post.id}}"
+                    class="cardEditText {% if post.current_like > 0 %} fas {%else%} far {% endif %} fa-heart">&nbsp<small
+                        class="small_text">{{post.like_set.count}}</small></div>
+            </p>
+        </div>
+    </div>
+    {% empty %}
+    <h2>No posts</h2>
+    {% endfor %}
+</div>
+{% endblock %}

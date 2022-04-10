@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Social Network{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" />
+    <link href="{% static 'network/styles.css' %}" rel="stylesheet" />
+    <link rel="icon" type="image/jpg" href="{% static 'assets/logo.png' %}" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{% url 'index' %}">Network</a>
+      <div>
+        {% with request.resolver_match.url_name as url_name %}
+        <ul class="navbar-nav mr-auto">
+          {% if user.is_authenticated %}
+          <li class="navigationItem {% if url_name == 'profile' %}active{% endif %}">
+            <a class="navigationInsideLinkItem" href="{% url 'profile' user.username %}"
+              ><strong>{{ user.username }}</strong></a
+            >
+          </li>
+          {% endif %}
+          <li class="navigationItem {% if url_name == 'index' %}active{% endif %}">
+            <a class="navigationInsideLinkItem" href="{% url 'index' %}">All Posts</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="navigationItem {% if url_name == 'following' %}active{% endif %}">
+            <a class="navigationInsideLinkItem" href="{% url 'following' %}">Following</a>
+          </li>
+          <li class="navigationItem {% if url_name == 'logout' %}active{% endif %}">
+            <a class="navigationInsideLinkItem" href="{% url 'logout' %}">Log Out</a>
+          </li>
+          {% else %}
+          <li class="navigationItem {% if url_name == 'login' %}active{% endif %}">
+            <a class="navigationInsideLinkItem" href="{% url 'login' %}">Log In</a>
+          </li>
+          <li class="navigationItem {% if url_name == 'register' %}active{% endif %}">
+            <a class="navigationInsideLinkItem" href="{% url 'register' %}">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+        {% endwith %}
+      </div>
+    </nav>
+    <div class="body">
+      {% block body %} {% endblock %}
+      <ul class="pagination justify-content-center">
+        {% if posts.has_previous %}
+        <li class="itemNavigation">
+          <a class="page-link" href="?page={{ posts.previous_page_number }}"> Previous </a>
+        </li>
+        {% endif %} {%if posts.paginator.num_pages > 1 %} {% for num in posts.paginator.page_range%}
+        {% if posts.number == num %}
+        <li class="itemNavigation active">
+          <a class="page-link">{{ num }}</a>
+        </li>
+        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+        <li class="itemNavigation">
+          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endif %} {% endfor %} {% endif %} {% if posts.has_next %}
+        <li class="itemNavigation">
+          <a class="page-link" href="?page={{ posts.next_page_number }}"> Next </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="{% static 'network/frontEndLogic.js' %}"></script>
+</html>

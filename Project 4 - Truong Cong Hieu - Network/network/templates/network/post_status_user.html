@@ -1,0 +1,16 @@
+{% if user.is_authenticated %}
+<div class="card">
+  <div class="rounderCard">
+    {% csrf_token %}
+    <div class="textArea">
+      <label for="post_text" class="h4">New Post</label>
+      <textarea
+        class="form-control"
+        id="content_new_post"
+        placeholder="How are you today?"
+      ></textarea>
+    </div>
+    <button class="btn btn-primary btn-sm" id="buttonSubmitPost">Post</button>
+  </div>
+</div>
+{%endif%}

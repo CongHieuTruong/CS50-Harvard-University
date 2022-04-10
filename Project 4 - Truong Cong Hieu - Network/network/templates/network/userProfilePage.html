@@ -1,0 +1,62 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div class="card">
+    <div class="rounderCard">
+        <h1 class="cardUserNameAndLink">{{user_profile.username}}</h1>
+        <h5 class="cardContentPost"><span id="sp_following">{{total_following}}</span> Following</h5>
+        <h5 class="cardContentPost"><span id="sp_followers">{{total_followers}}</span> Followers</h5>
+        <p class="cardContentPost"><small class="small_text"></small></p>
+        {% if user.is_authenticated and user.id != user_profile.id %}
+        <p class="cardContentPost">
+        {% if is_following > 0 %}
+            <button id="followButton" data-id="{{user_profile.id}}" type="button" class="btn btn-primary">Following</button>
+        {% else %}
+            <button id="followButton" data-id="{{user_profile.id}}" type="button" class="btn btn-outline-primary">Follow</button>
+        {%endif%}
+        </p>
+        {%endif%}
+    </div>
+</div>
+<div id="content">
+    <h3 id ='titleHeader' style="margin-top: 10px;">All Posts</h3>
+    {% for post in posts %}
+    <div class="card">
+        <div class="rounderCard">
+            <h5 class="cardUserNameAndLink"><a href="{% url 'profile' post.user.username %}">{{post.user.username}}</a></h5>
+            {%if post.user_id == user.id %}
+            <a href="#" class="cardEditText" id="editButton_{{post.id}}" data-id="{{post.id}}" data-toggle="modal">Edit</a>
+            {%endif%}
+            <p class="cardContentPost" id="post_text_{{post.id}}"> {{ post.text }}</p>
+            {%if post.user_id == user.id %}
+
+            <div id="edit_button_id{{post.id}}" data-id="{{post.id}}" style="display: none">
+                {% csrf_token %}
+                <div class="textArea">
+                    <textarea
+                    class="form-control"
+                    id="editTextPostId{{post.id}}"
+                    placeholder="How are you today?"
+                    ></textarea>
+                </div>
+                <div id="div_save_close_buttons">
+                <button type="button" data-id="{{post.id}}" id="buttonCloseEdit_{{post.id}}" class="btn btn-light"
+                    data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="buttonSaveEdit_{{post.id}}" queryId = '{{post.id}}'>Save changes</button>
+                </div>
+            </div>
+            {%endif%}
+            <p class="cardContentPost"><small class="small_text">{{post.post_date}}</small></p>
+            <p class="cardContentPost">
+                <div data-id="{{post.id}}" dataLikeId="{{post.id}}"
+                    class="cardEditText {% if post.current_like > 0 %} fas {%else%} far {% endif %} fa-heart">&nbsp<small
+                        class="small_text">{{post.like_set.count}}</small>
+                        </div>
+            </p>
+        </div>
+    </div>
+    {% empty %}
+    <h2>No posts</h2>
+    {% endfor %}
+</div>
+{% endblock %}
