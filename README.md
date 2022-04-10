@@ -6,6 +6,5 @@ In project 3 Mail, I have integrated Websocket for Python and Animation Front En
 
 You can refer Capstone Project demo here: https://hieutruong.tk/app/fintech/binance-app.
 
-![alt text](https://scontent.fsgn7-1.fna.fbcdn.net/v/t39.30808-6/274748528_7777931168890967_5096446950418371464_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_ohc=COUcgaH1JwEAX91Gh9V&_nc_ht=scontent.fsgn7-1.fna&oh=00_AT-T9Pz5n6kxbY8hFyzvIjdkDDZV2uKWU5nkRLvGZyxwhQ&oe=6258084B)
-
+![alt text](https://media.istockphoto.com/vectors/funny-shiba-inu-dog-paws-up-over-wall-dog-face-cartoon-vector-vector-id1185691474?k=20&m=1185691474&s=612x612&w=0&h=sn_WXxnFLb5mY6DEMlkgXEZWauE8hmKDf3V6v0l2Jdc=)
 Cheers,
